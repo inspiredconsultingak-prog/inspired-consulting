@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inspired Consulting — From Inspiration to Achievement</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple-deep: #2D0A5E;
+    --purple-mid: #4B0E9E;
+    --purple-light: #6B21C8;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-pale: #F5E8C0;
+    --white: #FFFFFF;
+    --off-white: #FAF8F4;
+    --text-dark: #1A0A35;
+    --text-muted: #8B7BAA;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--off-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(45, 10, 94, 0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+
+  .nav-logo-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); }
+
+  .nav-cta {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--purple-deep) !important;
+    background: var(--gold);
+    padding: 0.5rem 1.25rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light); color: var(--purple-deep) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--purple-deep);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 8rem 4rem 4rem;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 80% 50%, rgba(107, 33, 200, 0.3) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201, 168, 76, 0.08) 0%, transparent 60%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201, 168, 76, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201, 168, 76, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 780px;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5.5vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.7);
+    max-width: 520px;
+    margin-bottom: 2.75rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--purple-deep);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.9rem 2.25rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-block;
+    border: 1px solid rgba(201, 168, 76, 0.4);
+    color: rgba(255,255,255,0.8);
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.9rem 2.25rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.35);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  /* SECTION SHARED */
+  section { padding: 6rem 4rem; }
+
+  .section-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--purple-deep);
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--text-muted);
+    max-width: 520px;
+    margin-bottom: 3.5rem;
+  }
+
+  /* SERVICES — SMALL BUSINESS */
+  .services-sb {
+    background: var(--white);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5px;
+    background: rgba(75, 14, 158, 0.08);
+    border: 1.5px solid rgba(75, 14, 158, 0.08);
+  }
+
+  .service-card {
+    background: var(--white);
+    padding: 2rem 1.75rem;
+    position: relative;
+    transition: background 0.25s;
+  }
+
+  .service-card:hover { background: #FDF9FF; }
+
+  .service-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 1.25rem;
+    color: var(--gold);
+  }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--purple-deep);
+    margin-bottom: 0.5rem;
+  }
+
+  .service-desc {
+    font-size: 0.85rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  /* SERVICES — CONTRACTORS */
+  .services-trades {
+    background: var(--purple-deep);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .services-trades .section-title { color: var(--white); }
+  .services-trades .section-subtitle { color: rgba(255,255,255,0.55); }
+
+  .trades-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 80% at 90% 50%, rgba(107, 33, 200, 0.4) 0%, transparent 70%);
+  }
+
+  .trades-content { position: relative; z-index: 2; }
+
+  .trades-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(201, 168, 76, 0.12);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    color: var(--gold-light);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+    margin-bottom: 3rem;
+  }
+
+  .trades-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: rgba(201, 168, 76, 0.1);
+    border: 1px solid rgba(201, 168, 76, 0.1);
+  }
+
+  .trade-card {
+    background: rgba(45, 10, 94, 0.6);
+    padding: 1.75rem;
+    transition: background 0.25s;
+  }
+
+  .trade-card:hover { background: rgba(75, 14, 158, 0.4); }
+
+  .trade-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-bottom: 0.4rem;
+  }
+
+  .trade-card-desc {
+    font-size: 0.82rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* WHY US */
+  .why-us {
+    background: var(--off-white);
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .why-left .section-subtitle { margin-bottom: 2rem; }
+
+  .why-stat-row {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .why-stat { }
+
+  .why-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.75rem;
+    font-weight: 300;
+    color: var(--purple-mid);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .why-stat-label {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .why-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .pillar {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid rgba(75, 14, 158, 0.08);
+  }
+
+  .pillar:first-child { border-top: 1px solid rgba(75, 14, 158, 0.08); }
+
+  .pillar-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--gold);
+    min-width: 24px;
+    padding-top: 2px;
+  }
+
+  .pillar-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--purple-deep);
+    margin-bottom: 0.35rem;
+    letter-spacing: 0.03em;
+  }
+
+  .pillar-text {
+    font-size: 0.85rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    background: var(--white);
+    text-align: center;
+  }
+
+  .testimonials .section-eyebrow { justify-content: center; }
+  .testimonials .section-eyebrow::before { display: none; }
+  .testimonials .section-title { text-align: center; }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3.5rem;
+    text-align: left;
+  }
+
+  .testimonial-card {
+    background: var(--off-white);
+    border: 1px solid rgba(75, 14, 158, 0.08);
+    padding: 2rem;
+    border-radius: 2px;
+    position: relative;
+  }
+
+  .testimonial-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 0.5;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-text {
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #4A3B6B;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--purple-mid);
+  }
+
+  .testimonial-role {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+  }
+
+  /* CONTACT */
+  .contact {
+    background: var(--purple-deep);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 40% 60% at 10% 50%, rgba(107, 33, 200, 0.35) 0%, transparent 70%),
+      radial-gradient(ellipse 30% 40% at 90% 80%, rgba(201, 168, 76, 0.06) 0%, transparent 60%);
+  }
+
+  .contact-content { position: relative; z-index: 2; }
+
+  .contact .section-title { color: var(--white); }
+  .contact .section-subtitle { color: rgba(255,255,255,0.55); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact-info { }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-label {
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .contact-value {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-value:hover { color: var(--gold-light); }
+
+  .contact-area {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    margin-top: 1rem;
+    line-height: 1.6;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-label {
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .form-input, .form-select, .form-textarea {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    color: var(--white);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    padding: 0.75rem 1rem;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .form-select option { background: var(--purple-deep); }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: rgba(201, 168, 76, 0.6);
+  }
+
+  .form-input::placeholder, .form-textarea::placeholder {
+    color: rgba(255,255,255,0.2);
+  }
+
+  .form-textarea { resize: vertical; min-height: 120px; }
+
+  .form-submit {
+    background: var(--gold);
+    color: var(--purple-deep);
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    align-self: flex-start;
+  }
+
+  .form-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer {
+    background: #1A0533;
+    padding: 2.5rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(201, 168, 76, 0.1);
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .footer-tagline {
+    font-size: 0.72rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+  }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    .why-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg class="nav-logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="18" cy="18" r="17" stroke="#C9A84C" stroke-width="1"/>
+      <path d="M18 8 C18 8 24 13 24 18 C24 23 18 28 18 28 C18 28 12 23 12 18 C12 13 18 8 18 8Z" stroke="#C9A84C" stroke-width="0.75" fill="none"/>
+      <path d="M8 18 C8 18 13 12 18 12 C23 12 28 18 28 18 C28 18 23 24 18 24 C13 24 8 18 8 18Z" stroke="#C9A84C" stroke-width="0.75" fill="none"/>
+      <circle cx="18" cy="18" r="2" fill="#C9A84C" opacity="0.6"/>
+      <circle cx="13" cy="13" r="1" fill="#C9A84C" opacity="0.4"/>
+      <circle cx="23" cy="13" r="1" fill="#C9A84C" opacity="0.4"/>
+      <circle cx="13" cy="23" r="1" fill="#C9A84C" opacity="0.4"/>
+      <circle cx="23" cy="23" r="1" fill="#C9A84C" opacity="0.4"/>
+    </svg>
+    <span class="nav-brand">Inspired Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#trades">For Trades</a></li>
+    <li><a href="#why-us">Why Us</a></li>
+    <li><a href="#contact" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Serving All of California</p>
+    <h1 class="hero-headline">
+      You built your business<br>
+      <em>with your hands.</em><br>
+      We'll handle everything else.
+    </h1>
+    <p class="hero-sub">Less paperwork. More jobsites. We handle the business side so you don't have to.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get Started</a>
+      <a href="#services" class="btn-ghost">See Our Services</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- SERVICES — SMALL BUSINESS -->
+<section class="services-sb" id="services">
+  <div class="section-eyebrow">What We Offer</div>
+  <h2 class="section-title">Small Business Services</h2>
+  <p class="section-subtitle">Everything a growing business needs to stay organized, compliant, and moving forward.</p>
+  <div class="services-grid">
+
+    <div class="service-card fade-up">
+      <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
+        <rect x="6" y="4" width="24" height="28" rx="2"/>
+        <line x1="11" y1="12" x2="25" y2="12"/>
+        <line x1="11" y1="17" x2="25" y2="17"/>
+        <line x1="11" y1="22" x2="19" y2="22"/>
+      </svg>
+      <div class="service-name">Business Planning</div>
+      <div class="service-desc">Strategic roadmaps, goal-setting frameworks, and operational plans that turn your vision into a clear path forward.</div>
+    </div>
+
+    <div class="service-card fade-up">
+      <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
+        <circle cx="18" cy="14" r="6"/>
+        <path d="M8 30 C8 24 28 24 28 30"/>
+        <circle cx="28" cy="12" r="3"/>
+        <circle cx="8" cy="16" r="3"/>
+      </svg>
+      <div class="service-name">Marketing</div>
+      <div class="service-desc">Brand positioning, digital presence, and targeted campaigns designed to bring the right clients to your door.</div>
+    </div>
+
+    <div class="service-card fade-up">
+      <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
+        <rect x="4" y="8" width="28" height="20" rx="2"/>
+        <line x1="4" y1="14" x2="32" y2="14"/>
+        <circle cx="10" cy="22" r="2"/>
+        <line x1="14" y1="22" x2="24" y2="22"/>
+      </svg>
+      <div class="service-name">Website Development</div>
+      <div class="service-desc">Professional, conversion-focused websites that represent your business and work as hard as you do.</div>
+    </div>
+
+    <div class="service-card fade-up">
+      <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
+        <path d="M6 28 L6 16 L12 16 L12 28"/>
+        <path d="M14 28 L14 10 L20 10 L20 28"/>
+        <path d="M22 28 L22 20 L28 20 L28 28"/>
+        <line x1="4" y1="28" x2="32" y2="28"/>
+      </svg>
+      <div class="service-name">Bookkeeping</div>
+      <div class="service-desc">Clean books, accurate records, and clear financial visibility so you always know where your business stands.</div>
+    </div>
+
+    <div class="service-card fade-up">
+      <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
+        <circle cx="18" cy="10" r="5"/>
+        <path d="M8 30 C8 22 28 22 28 30"/>
+        <line x1="22" y1="18" x2="30" y2="18"/>
+        <line x1="26" y1="14" x2="26" y2="22"/>
+      </svg>
+      <div class="service-name">Payroll</div>
+      <div class="service-desc">Accurate, on-time payroll processing with full compliance — so your team gets paid right, every time.</div>
+    </div>
+
+    <div class="service-card fade-up">
+      <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
+        <path d="M18 4 L22 10 L30 11 L24 17 L26 26 L18 22 L10 26 L12 17 L6 11 L14 10 Z"/>
+      </svg>
+      <div class="service-name">HR & Audit Reviews</div>
+      <div class="service-desc">HR policies, internal audits, and compliance checks that protect your business and keep you ready for anything.</div>
+    </div>
+
+    <div class="service-card fade-up">
+      <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
+        <rect x="6" y="6" width="24" height="24" rx="2"/>
+        <path d="M6 14 L30 14"/>
+        <path d="M14 6 L14 14"/>
+        <path d="M22 6 L22 14"/>
+        <line x1="11" y1="21" x2="25" y2="21"/>
+        <line x1="11" y1="26" x2="19" y2="26"/>
+      </svg>
+      <div class="service-name">Licensing & Compliance</div>
+      <div class="service-desc">License renewals, insurance certificates, bond tracking, and regulatory compliance — never let a deadline slip again.</div>
+    </div>
+
+    <div class="service-card fade-up">
+      <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
+        <path d="M8 6 L28 6 L28 30 L8 30 Z"/>
+        <line x1="13" y1="13" x2="23" y2="13"/>
+        <line x1="13" y1="18" x2="23" y2="18"/>
+        <line x1="13" y1="23" x2="19" y2="23"/>
+        <circle cx="26" cy="26" r="4" fill="white" stroke="currentColor"/>
+        <line x1="24" y1="26" x2="28" y2="26"/>
+        <line x1="26" y1="24" x2="26" y2="28"/>
+      </svg>
+      <div class="service-name">Contract & Invoicing</div>
+      <div class="service-desc">Professional contract templates, invoicing systems, and collections support that get you paid faster and protected better.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES — CONTRACTORS -->
+<section class="services-trades" id="trades">
+  <div class="trades-bg"></div>
+  <div class="trades-content">
+    <div class="section-eyebrow" style="color: var(--gold);">Specialized for the Trades</div>
+    <h2 class="section-title">Built for Contractors & Labor Businesses</h2>
+    <p class="section-subtitle">Everything in our small business suite — plus the specialized services that the trades industry actually needs.</p>
+    <div class="trades-banner">
+      ✦ &nbsp; Includes all small business services, plus:
+    </div>
+    <div class="trades-grid">
+      <div class="trade-card fade-up">
+        <div class="trade-card-name">Workers' Comp Reporting</div>
+        <div class="trade-card-desc">Accurate classification, payroll reporting, and audit prep to keep your premiums fair and your coverage solid.</div>
+      </div>
+      <div class="trade-card fade-up">
+        <div class="trade-card-name">Workers' Comp Audits</div>
+        <div class="trade-card-desc">We represent you through the audit process, challenge misclassifications, and recover overcharges on your behalf.</div>
+      </div>
+      <div class="trade-card fade-up">
+        <div class="trade-card-name">Lead Management</div>
+        <div class="trade-card-desc">Systems to track, follow up, and close more leads — so no job opportunity falls through the cracks.</div>
+      </div>
+      <div class="trade-card fade-up">
+        <div class="trade-card-name">Invoicing for Contractors</div>
+        <div class="trade-card-desc">Progress billing, lien waivers, change order tracking — invoicing built around how construction jobs actually work.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us" id="why-us">
+  <div class="why-grid">
+    <div class="why-left fade-up">
+      <div class="section-eyebrow">Why Inspired Consulting</div>
+      <h2 class="section-title">We speak your language</h2>
+      <p class="section-subtitle">Most consultants don't understand what it means to run a trades business. We do. We've built our services around the real challenges contractors, plumbers, and labor businesses face every day.</p>
+      <div class="why-stat-row">
+        <div class="why-stat">
+          <div class="why-stat-num">100%</div>
+          <div class="why-stat-label">California-Based</div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-num">1</div>
+          <div class="why-stat-label">Point of Contact</div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-num">All</div>
+          <div class="why-stat-label">Industries Served</div>
+        </div>
+      </div>
+    </div>
+    <div class="why-pillars fade-up">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div>
+          <div class="pillar-title">Industry expertise that runs deep</div>
+          <div class="pillar-text">We understand workers' comp audits, contractor licensing, and the cash flow realities of seasonal labor businesses. You won't need to explain your world to us.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div>
+          <div class="pillar-title">One partner for everything</div>
+          <div class="pillar-text">Instead of juggling an accountant, an HR firm, a web developer, and a marketing agency, you get one team that handles it all and keeps everything aligned.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div>
+          <div class="pillar-title">Built to scale with you</div>
+          <div class="pillar-text">Whether you're a sole operator or managing a crew of 20, our services grow with your business. Start with what you need, add more as you grow.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">04</div>
+        <div>
+          <div class="pillar-title">Your time back, guaranteed</div>
+          <div class="pillar-text">Every service we provide is one less thing pulling you away from the work you're actually good at. That's not a promise — it's the whole point.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-eyebrow">What Clients Say</div>
+  <h2 class="section-title">Results that speak for themselves</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-card fade-up">
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">Working with Inspired Consulting completely changed how I run my plumbing business. I used to dread tax season and workers' comp audits. Now I don't think about them at all.</p>
+      <div class="testimonial-author">J. Martinez</div>
+      <div class="testimonial-role">Owner, Martinez Plumbing — Los Angeles, CA</div>
+    </div>
+    <div class="testimonial-card fade-up">
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">Finally found someone who actually understands contractors. They got my workers' comp classification corrected and saved me thousands. Worth every penny.</p>
+      <div class="testimonial-author">T. Williams</div>
+      <div class="testimonial-role">General Contractor — Sacramento, CA</div>
+    </div>
+    <div class="testimonial-card fade-up">
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">I went from doing everything myself to having a real business system. My books are clean, my invoices go out on time, and I actually know where my money is going.</p>
+      <div class="testimonial-author">R. Chen</div>
+      <div class="testimonial-role">HVAC Business Owner — San Diego, CA</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-bg"></div>
+  <div class="contact-content">
+    <div class="section-eyebrow" style="color: var(--gold);">Get in Touch</div>
+    <h2 class="section-title">Ready to focus on your craft?</h2>
+    <p class="section-subtitle">Let's talk about your business. No pressure, no jargon — just a real conversation about how we can help.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <span class="contact-label">Phone</span>
+          <a href="tel:8623685574" class="contact-value">(862) 368-5574</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <a href="mailto:inspiredconsultingak@gmail.com" class="contact-value">inspiredconsultingak@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Service Area</span>
+          <span class="contact-value" style="cursor: default;">All of California</span>
+        </div>
+        <p class="contact-area">Serving contractors, plumbers, HVAC professionals, electricians, landscapers, and all trades businesses throughout the state of California.</p>
+      </div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-input" placeholder="John">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-input" placeholder="Smith">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="john@yourcompany.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone</label>
+          <input type="tel" class="form-input" placeholder="(555) 000-0000">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Business Type</label>
+          <select class="form-select">
+            <option value="">Select your industry...</option>
+            <option>General Contractor</option>
+            <option>Plumbing</option>
+            <option>Electrical</option>
+            <option>HVAC</option>
+            <option>Landscaping / Grounds</option>
+            <option>Roofing</option>
+            <option>Painting</option>
+            <option>Other Trades</option>
+            <option>Other Small Business</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">How can we help?</label>
+          <textarea class="form-textarea" placeholder="Tell us a bit about your business and what you're looking for..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Inspired Consulting</div>
+    <div class="footer-tagline">From Inspiration to Achievement</div>
+  </div>
+  <div class="footer-copy">© 2025 Inspired Consulting. All rights reserved. Serving California.</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Message Sent ✓';
+    btn.style.background = '#5DCAA5';
+    setTimeout(() => {
+      btn.textContent = 'Send Message →';
+      btn.style.background = '';
+    }, 3000);
+  }
+</script>
+</body>
+</html>
