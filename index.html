@@ -521,10 +521,18 @@
 
   // Tap to flip tiles on touch devices
   if ('ontouchstart' in window) {
-    document.querySelectorAll('.tile').forEach(tile => {
-      tile.addEventListener('click', () => {
-        tile.classList.toggle('tapped');
-      });
+    document.addEventListener('click', (e) => {
+      const tile = e.target.closest('.tile');
+      if (tile) {
+        const wasOpen = tile.classList.contains('tapped');
+        // Close all tiles first
+        document.querySelectorAll('.tile.tapped').forEach(t => t.classList.remove('tapped'));
+        // If this one wasn't open, open it
+        if (!wasOpen) tile.classList.add('tapped');
+      } else {
+        // Tapped outside a tile — close all
+        document.querySelectorAll('.tile.tapped').forEach(t => t.classList.remove('tapped'));
+      }
     });
   }
 </script>
