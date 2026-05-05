@@ -124,8 +124,8 @@
   .tile-back-name { font-family: 'Cormorant Garamond', serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.55rem; }
   .tile-back-desc { font-size: 0.78rem; font-weight: 300; line-height: 1.65; color: rgba(255,255,255,0.78); }
 
-  .tile:hover .tile-front { opacity: 0; transform: translateY(-10px); }
-  .tile:hover .tile-back { opacity: 1; transform: translateY(0); }
+  .tile:hover .tile-front, .tile.tapped .tile-front { opacity: 0; transform: translateY(-10px); }
+  .tile:hover .tile-back, .tile.tapped .tile-back { opacity: 1; transform: translateY(0); }
 
   /* SMALL BUSINESS */
   .services-sb { background: var(--white); }
@@ -517,6 +517,15 @@
     btn.textContent = 'Message Sent ✓';
     btn.style.background = '#5DCAA5';
     setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; }, 3000);
+  }
+
+  // Tap to flip tiles on touch devices
+  if ('ontouchstart' in window) {
+    document.querySelectorAll('.tile').forEach(tile => {
+      tile.addEventListener('click', () => {
+        tile.classList.toggle('tapped');
+      });
+    });
   }
 </script>
 </body>
