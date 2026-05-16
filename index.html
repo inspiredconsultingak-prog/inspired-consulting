@@ -43,6 +43,48 @@
   .nav-cta { color: var(--purple-deep) !important; background: var(--gold); padding: 0.5rem 1.25rem; border-radius: 2px; transition: background 0.2s !important; }
   .nav-cta:hover { background: var(--gold-light) !important; color: var(--purple-deep) !important; }
 
+  /* ── NAV DROPDOWN ── */
+  .nav-dropdown { position: relative; }
+  .nav-dropdown > a { display: flex; align-items: center; gap: 0.35rem; }
+  .nav-dropdown > a::after {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-right: 1px solid rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 0.2s;
+  }
+  .nav-dropdown:hover > a::after { transform: rotate(225deg) translateY(-2px); }
+  .nav-dropdown-menu {
+    position: absolute; top: calc(100% + 1rem); left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 8, 65, 0.98);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px;
+    min-width: 180px;
+    opacity: 0; visibility: hidden;
+    transform: translateX(-50%) translateY(-6px);
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+    z-index: 200;
+    overflow: hidden;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu {
+    opacity: 1; visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+  .nav-dropdown-menu a {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.72rem; letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.7) !important;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    transition: background 0.15s, color 0.15s !important;
+    white-space: nowrap;
+  }
+  .nav-dropdown-menu a:last-child { border-bottom: none; }
+  .nav-dropdown-menu a:hover { background: rgba(201,168,76,0.08); color: var(--gold-light) !important; }
+
   /* ── HERO ── */
   .hero {
     min-height: 100vh; background: var(--purple-deep);
@@ -112,6 +154,7 @@
   /* ── INTRO & SMARTER SECTIONS ── */
   .intro-section { background: var(--off-white); text-align: center; padding: 5rem 4rem 4rem; }
   .smarter-section { background: var(--off-white); text-align: center; padding: 4rem 4rem 5rem; }
+  .smarter-subheading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 2.5vw, 2.2rem); font-weight: 300; color: var(--purple-deep); margin-top: 2rem; }
 
   /* ── PILLARS INTRO ── */
   .pillars-intro {
@@ -216,6 +259,15 @@
   .why-cta { text-align: center; margin-top: 3.5rem; }
   .why-cta-heading { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--purple-deep); margin-bottom: 1.25rem; }
 
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--white); text-align: center; }
+  .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1100px; margin: 0 auto; text-align: left; }
+  .testimonial-card { background: var(--off-white); border: 1px solid rgba(75,14,158,0.08); padding: 2.25rem; border-radius: 2px; display: flex; flex-direction: column; }
+  .testimonial-quote { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; color: var(--gold); line-height: 0.6; margin-bottom: 1.25rem; }
+  .testimonial-text { font-size: 0.9rem; font-weight: 300; line-height: 1.85; color: #4A3B6B; font-style: italic; flex: 1; margin-bottom: 1.5rem; }
+  .testimonial-author { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple-mid); }
+  .testimonial-role { font-size: 0.75rem; font-weight: 300; color: var(--text-muted); margin-top: 0.2rem; }
+
   /* ── CONTACT ── */
   .contact { background: var(--purple-deep); position: relative; overflow: hidden; text-align: center; }
   .contact-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 40% 60% at 10% 50%, rgba(107,33,200,0.35) 0%, transparent 70%); }
@@ -260,6 +312,7 @@
     .pillars-section { padding: 2.5rem 1.5rem 3.5rem; }
     .pillars-grid { grid-template-columns: 1fr; }
     .why-icons { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+    .testimonial-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .form-row { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 1.25rem; text-align: center; }
@@ -304,7 +357,14 @@
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="services.html">Services</a></li>
+    <li class="nav-dropdown">
+      <a href="services.html">Services</a>
+      <div class="nav-dropdown-menu">
+        <a href="operations.html">Business Operations</a>
+        <a href="growth.html">Business Growth</a>
+      </div>
+    </li>
+    <li><a href="portfolio.html">Portfolio</a></li>
     <li><a href="resources.html">Resources</a></li>
     <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
   </ul>
@@ -362,7 +422,7 @@
 
 <!-- ── EVERYTHING YOUR BUSINESS NEEDS ── -->
 <section class="intro-section fade-up">
-  <h2 class="section-title">Everything Your Business Needs to Run and Grow</h2>
+  <h2 class="section-title">Everything Your Business Needs to Operate and Grow</h2>
   <p class="section-subtitle" style="max-width:680px;">Most business owners don't need more disconnected services — they need one partner who can support both the operational and strategic sides of their business. We bring clarity, structure, and consistency to help you move forward with confidence.</p>
 </section>
 
@@ -392,15 +452,14 @@
 
 <!-- ── SMARTER WAY ── -->
 <section class="smarter-section fade-up">
-  <h2 class="section-title">A Smarter Way to Support Your Business</h2>
-  <p class="section-subtitle" style="max-width:640px;">Instead of managing multiple providers for bookkeeping, HR, marketing, and strategy, you get one streamlined partner focused on helping your business operate and grow efficiently.</p>
+  <div class="section-eyebrow">Why Inspired Consulting</div>
+  <h2 class="section-title">A Different Kind of Partner</h2>
+  <p class="section-subtitle" style="max-width:640px;">Instead of juggling multiple providers, work with one trusted team for financial organization, operational support, compliance, and business development. Our integrated approach helps you save time, stay organized, and focus on growth.</p>
+  <h3 class="smarter-subheading">A Smarter Way to Support Your Business</h3>
 </section>
 
 <!-- ── WHY US ── -->
 <section class="why-us" id="why-us">
-  <div class="section-eyebrow">Why Inspired Consulting</div>
-  <h2 class="section-title">A Different Kind of Partner</h2>
-  <p class="section-subtitle">Instead of juggling multiple providers, work with one trusted team for financial organization, operational support, compliance, and business development. Our integrated approach helps you save time, stay organized, and focus on growth.</p>
   <p class="why-intro fade-up">We combine operational structure with strategic thinking to give you complete business support in one place.</p>
 
   <div class="why-icons fade-up">
@@ -451,6 +510,37 @@
   </div>
 </section>
 
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials">
+  <div class="section-eyebrow">Client Stories</div>
+  <h2 class="section-title">Real Support. Real Results.</h2>
+  <p class="section-subtitle">Here's what business owners say about working with Inspired Consulting.</p>
+  <div class="testimonial-grid fade-up">
+
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">Working with Inspired Consulting completely changed how we manage our back office. We finally have clean books, payroll that runs on time, and a team we trust. I can focus on growing my business instead of chasing paperwork.</p>
+      <div class="testimonial-author">Jane D.</div>
+      <div class="testimonial-role">Owner, General Contracting Company</div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">They built our website, designed our logo, and set up our brand kit — all in one seamless process. We went from having no real identity to looking like an established business overnight. The difference has been incredible.</p>
+      <div class="testimonial-author">Marcus T.</div>
+      <div class="testimonial-role">Founder, Professional Services Firm</div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">I was juggling five different vendors and still falling behind. Inspired Consulting brought everything under one roof. One call, one team, one plan. My stress level dropped immediately and my business is more organized than ever.</p>
+      <div class="testimonial-author">Sophia R.</div>
+      <div class="testimonial-role">CEO, Retail & E-Commerce Brand</div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ── CONTACT ── -->
 <section class="contact" id="contact">
   <div class="contact-bg"></div>
@@ -476,10 +566,11 @@
           <select class="form-select">
             <option value="">Select your industry...</option>
             <option>Startup / New Business</option>
-            <option>General Contractor</option><option>Plumbing</option><option>Electrical</option>
-            <option>HVAC</option><option>Landscaping / Grounds</option><option>Roofing</option>
-            <option>Painting</option><option>Other Trades</option><option>Retail / E-Commerce</option>
-            <option>Professional Services</option><option>Other Small Business</option>
+            <option>General Contractor / Building Services</option>
+            <option>Financial Services</option>
+            <option>Retail / E-Commerce</option>
+            <option>Professional Services</option>
+            <option>Other Small Business</option>
           </select>
         </div>
         <div class="form-group">
@@ -507,6 +598,7 @@
   <ul class="footer-links">
     <li><a href="about.html">About</a></li>
     <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
     <li><a href="resources.html">Resources</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>

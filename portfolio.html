@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | Inspired Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple-deep: #2D0A5E;
+    --purple-mid: #4B0E9E;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --white: #FFFFFF;
+    --off-white: #FAF8F4;
+    --text-dark: #1A0A35;
+    --text-muted: #8B7BAA;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: var(--off-white); color: var(--text-dark); overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0.85rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(45, 10, 94, 0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+  }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; gap: 0.85rem; }
+  .nav-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+  .nav-links a { font-size: 0.78rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--purple-deep) !important; background: var(--gold); padding: 0.5rem 1.25rem; border-radius: 2px; transition: background 0.2s !important; }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    min-height: 48vh; background: var(--purple-deep);
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    position: relative; overflow: hidden; padding: 8rem 4rem 5rem;
+  }
+  .page-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 55% 65% at 70% 50%, rgba(107,33,200,0.35) 0%, transparent 70%), radial-gradient(ellipse 35% 45% at 15% 75%, rgba(201,168,76,0.07) 0%, transparent 60%); }
+  .page-hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+  .page-hero-content { position: relative; z-index: 2; max-width: 700px; }
+  .page-hero-eyebrow { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
+  .page-hero-eyebrow::before, .page-hero-eyebrow::after { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+  .page-hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; color: var(--white); margin-bottom: 1.25rem; }
+  .page-hero-title em { font-style: italic; color: var(--gold-light); }
+  .page-hero-sub { font-size: 1rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,0.6); max-width: 520px; margin: 0 auto; }
+
+  /* ── FILTER TABS ── */
+  .filter-bar { background: var(--white); padding: 2rem 4rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; border-bottom: 1px solid rgba(75,14,158,0.08); }
+  .filter-btn { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.55rem 1.4rem; border-radius: 2px; border: 1px solid rgba(75,14,158,0.2); color: var(--text-muted); background: transparent; cursor: pointer; transition: all 0.2s; }
+  .filter-btn:hover { border-color: var(--purple-mid); color: var(--purple-mid); }
+  .filter-btn.active { background: var(--purple-deep); border-color: var(--purple-deep); color: var(--white); }
+
+  /* ── SHARED ── */
+  .portfolio-section { padding: 5rem 4rem; }
+  .section-eyebrow { font-size: 0.7rem; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-eyebrow::before, .section-eyebrow::after { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; line-height: 1.15; color: var(--purple-deep); margin-bottom: 0.75rem; }
+  .section-sub { font-size: 0.92rem; font-weight: 300; line-height: 1.8; color: var(--text-muted); max-width: 540px; margin-bottom: 3rem; }
+
+  /* ── WEBSITE CARDS ── */
+  .websites-section { background: var(--white); }
+  .website-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; max-width: 1100px; }
+  .website-card { border: 1px solid rgba(75,14,158,0.08); border-radius: 2px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+  .website-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(45,10,94,0.1); }
+  .website-preview {
+    width: 100%; aspect-ratio: 16/9;
+    background: linear-gradient(135deg, rgba(75,14,158,0.08) 0%, rgba(201,168,76,0.08) 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .website-preview-inner {
+    width: 85%; height: 80%; background: var(--white);
+    border-radius: 4px 4px 0 0; box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .preview-bar { height: 20px; background: #f0eef8; display: flex; align-items: center; padding: 0 8px; gap: 4px; flex-shrink: 0; }
+  .preview-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .preview-dot:nth-child(1) { background: #ff6b6b; }
+  .preview-dot:nth-child(2) { background: #ffd93d; }
+  .preview-dot:nth-child(3) { background: #6bcb77; }
+  .preview-body { flex: 1; background: var(--off-white); display: flex; flex-direction: column; gap: 6px; padding: 10px; }
+  .preview-hero-block { height: 40%; background: linear-gradient(135deg, var(--purple-deep), var(--purple-mid)); border-radius: 2px; }
+  .preview-content-rows { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+  .preview-row { height: 8px; background: rgba(75,14,158,0.1); border-radius: 2px; }
+  .preview-row:nth-child(2) { width: 75%; }
+  .preview-row:nth-child(3) { width: 55%; }
+  .preview-row-gold { background: rgba(201,168,76,0.25); width: 40%; height: 8px; border-radius: 2px; }
+  .website-info { padding: 1.5rem; background: var(--white); }
+  .website-tag { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .website-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--purple-deep); margin-bottom: 0.35rem; }
+  .website-desc { font-size: 0.82rem; font-weight: 300; line-height: 1.65; color: var(--text-muted); }
+  .website-services { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.85rem; }
+  .service-tag { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.7rem; border: 1px solid rgba(75,14,158,0.15); color: var(--text-muted); border-radius: 2px; }
+
+  /* ── BRAND CARDS ── */
+  .brand-section { background: var(--off-white); }
+  .brand-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1100px; }
+  .brand-card { background: var(--white); border: 1px solid rgba(75,14,158,0.08); border-radius: 2px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+  .brand-card:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(45,10,94,0.08); }
+  .brand-preview {
+    width: 100%; aspect-ratio: 4/3;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  /* Each brand gets a unique palette */
+  .brand-preview--a { background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%); }
+  .brand-preview--b { background: linear-gradient(145deg, #f5f0e8 0%, #ede4d3 100%); }
+  .brand-preview--c { background: linear-gradient(145deg, #0d3b2e 0%, #145a3c 100%); }
+  .brand-preview--d { background: linear-gradient(145deg, #2c2c54 0%, #474787 100%); }
+  .brand-preview--e { background: linear-gradient(145deg, #1b1b1b 0%, #2d2d2d 100%); }
+  .brand-preview--f { background: linear-gradient(145deg, #4a1942 0%, #6b2d5e 100%); }
+
+  .brand-logo-placeholder {
+    display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+  }
+  .brand-logo-mark {
+    width: 52px; height: 52px; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .brand-logo-mark svg { width: 36px; height: 36px; }
+  .brand-wordmark { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; }
+  .brand-color-dots { display: flex; gap: 6px; margin-top: 0.75rem; }
+  .brand-dot { width: 12px; height: 12px; border-radius: 50%; }
+
+  .brand-info { padding: 1.25rem 1.5rem; }
+  .brand-tag { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.35rem; }
+  .brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--purple-deep); margin-bottom: 0.3rem; }
+  .brand-desc { font-size: 0.8rem; font-weight: 300; line-height: 1.65; color: var(--text-muted); }
+
+  /* ── CTA ── */
+  .portfolio-cta { background: var(--purple-deep); text-align: center; padding: 6rem 4rem; position: relative; overflow: hidden; }
+  .portfolio-cta-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(107,33,200,0.35) 0%, transparent 70%); }
+  .portfolio-cta-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+  .portfolio-cta-content { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; }
+  .portfolio-cta-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 300; color: var(--white); margin-bottom: 1rem; line-height: 1.15; }
+  .portfolio-cta-title em { color: var(--gold-light); font-style: italic; }
+  .portfolio-cta-sub { font-size: 0.95rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,0.6); margin-bottom: 2.25rem; }
+  .btn-primary { display: inline-block; background: var(--gold); color: var(--purple-deep); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.9rem 2.25rem; border-radius: 2px; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer { background: #1A0533; padding: 2.5rem 4rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(201,168,76,0.1); }
+  .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+  .footer-tagline { font-size: 0.72rem; font-weight: 300; letter-spacing: 0.15em; color: rgba(255,255,255,0.25); text-transform: uppercase; margin-top: 0.2rem; }
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+  .footer-links a { font-size: 0.72rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-size: 0.75rem; font-weight: 300; color: rgba(255,255,255,0.2); }
+
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 960px) {
+    nav { padding: 1rem 1.5rem; }
+    .portfolio-section { padding: 3.5rem 1.5rem; }
+    .filter-bar { padding: 1.5rem; flex-wrap: wrap; }
+    .website-grid { grid-template-columns: 1fr; }
+    .brand-grid { grid-template-columns: repeat(2, 1fr); }
+    footer { flex-direction: column; gap: 1.25rem; text-align: center; }
+    .footer-links { justify-content: center; }
+    .portfolio-cta { padding: 4rem 1.5rem; }
+  }
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .page-hero { padding: 7rem 1.5rem 4rem; }
+    .brand-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-70 -70 140 140" height="42" width="42" role="img" aria-label="Inspired Consulting logo">
+      <circle cx="0" cy="0" r="58" fill="none" stroke="#C9A84C" stroke-width="3"/>
+      <circle cx="0" cy="0" r="47" fill="none" stroke="#C9A84C" stroke-width="1.4" opacity="0.5"/>
+      <ellipse cx="0" cy="-22" rx="9" ry="16" fill="none" stroke="#C9A84C" stroke-width="3"/>
+      <ellipse cx="0" cy="-22" rx="9" ry="16" fill="none" stroke="#C9A84C" stroke-width="3" transform="rotate(60)"/>
+      <ellipse cx="0" cy="-22" rx="9" ry="16" fill="none" stroke="#C9A84C" stroke-width="3" transform="rotate(120)"/>
+      <ellipse cx="0" cy="-22" rx="9" ry="16" fill="none" stroke="#C9A84C" stroke-width="3" transform="rotate(180)"/>
+      <ellipse cx="0" cy="-22" rx="9" ry="16" fill="none" stroke="#C9A84C" stroke-width="3" transform="rotate(240)"/>
+      <ellipse cx="0" cy="-22" rx="9" ry="16" fill="none" stroke="#C9A84C" stroke-width="3" transform="rotate(300)"/>
+      <circle cx="0" cy="0" r="5" fill="#C9A84C"/>
+      <circle cx="0" cy="-51" r="3" fill="#C9A84C"/>
+      <circle cx="0" cy="-51" r="3" fill="#C9A84C" transform="rotate(60)"/>
+      <circle cx="0" cy="-51" r="3" fill="#C9A84C" transform="rotate(120)"/>
+      <circle cx="0" cy="-51" r="3" fill="#C9A84C" transform="rotate(180)"/>
+      <circle cx="0" cy="-51" r="3" fill="#C9A84C" transform="rotate(240)"/>
+      <circle cx="0" cy="-51" r="3" fill="#C9A84C" transform="rotate(300)"/>
+      <circle cx="0" cy="-37" r="2" fill="#C9A84C" transform="rotate(30)"/>
+      <circle cx="0" cy="-37" r="2" fill="#C9A84C" transform="rotate(90)"/>
+      <circle cx="0" cy="-37" r="2" fill="#C9A84C" transform="rotate(150)"/>
+      <circle cx="0" cy="-37" r="2" fill="#C9A84C" transform="rotate(210)"/>
+      <circle cx="0" cy="-37" r="2" fill="#C9A84C" transform="rotate(270)"/>
+      <circle cx="0" cy="-37" r="2" fill="#C9A84C" transform="rotate(330)"/>
+    </svg>
+    <span class="nav-logo-text">Inspired Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- ── PAGE HERO ── -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <p class="page-hero-eyebrow">Our Work</p>
+    <h1 class="page-hero-title">Built with <em>Purpose</em></h1>
+    <p class="page-hero-sub">From brand identities to full website builds — here's a look at the work we've done for businesses like yours.</p>
+  </div>
+</div>
+
+<!-- ── FILTER BAR ── -->
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterPortfolio('all', this)">All Work</button>
+  <button class="filter-btn" onclick="filterPortfolio('web', this)">Websites</button>
+  <button class="filter-btn" onclick="filterPortfolio('brand', this)">Brand & Logo</button>
+</div>
+
+<!-- ── WEBSITES ── -->
+<section class="portfolio-section websites-section" id="web-section">
+  <div class="section-eyebrow">Web Design & Development</div>
+  <h2 class="section-title">Websites That Work</h2>
+  <p class="section-sub">Professional, conversion-focused websites built to represent your brand and turn visitors into clients.</p>
+
+  <div class="website-grid fade-up">
+
+    <div class="website-card">
+      <div class="website-preview">
+        <div class="website-preview-inner">
+          <div class="preview-bar">
+            <div class="preview-dot"></div><div class="preview-dot"></div><div class="preview-dot"></div>
+          </div>
+          <div class="preview-body">
+            <div class="preview-hero-block"></div>
+            <div class="preview-content-rows">
+              <div class="preview-row"></div>
+              <div class="preview-row"></div>
+              <div class="preview-row"></div>
+              <div class="preview-row-gold"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="website-info">
+        <div class="website-tag">Placeholder — Replace with client site</div>
+        <div class="website-name">Client Website A</div>
+        <div class="website-desc">A clean, professional website designed to establish credibility and generate leads for a growing small business.</div>
+        <div class="website-services">
+          <span class="service-tag">Web Design</span>
+          <span class="service-tag">Development</span>
+          <span class="service-tag">Copywriting</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="website-card">
+      <div class="website-preview">
+        <div class="website-preview-inner">
+          <div class="preview-bar">
+            <div class="preview-dot"></div><div class="preview-dot"></div><div class="preview-dot"></div>
+          </div>
+          <div class="preview-body">
+            <div class="preview-hero-block" style="background: linear-gradient(135deg, #C9A84C, #2D0A5E);"></div>
+            <div class="preview-content-rows">
+              <div class="preview-row"></div>
+              <div class="preview-row"></div>
+              <div class="preview-row"></div>
+              <div class="preview-row-gold"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="website-info">
+        <div class="website-tag">Placeholder — Replace with client site</div>
+        <div class="website-name">Client Website B</div>
+        <div class="website-desc">A bold, brand-forward site built for a service-based business looking to stand out in a competitive market.</div>
+        <div class="website-services">
+          <span class="service-tag">Web Design</span>
+          <span class="service-tag">Brand Integration</span>
+          <span class="service-tag">SEO Setup</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="website-card">
+      <div class="website-preview">
+        <div class="website-preview-inner">
+          <div class="preview-bar">
+            <div class="preview-dot"></div><div class="preview-dot"></div><div class="preview-dot"></div>
+          </div>
+          <div class="preview-body">
+            <div class="preview-hero-block" style="background: linear-gradient(135deg, #1a3a4a, #2d6a8a);"></div>
+            <div class="preview-content-rows">
+              <div class="preview-row"></div>
+              <div class="preview-row"></div>
+              <div class="preview-row"></div>
+              <div class="preview-row-gold"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="website-info">
+        <div class="website-tag">Placeholder — Replace with client site</div>
+        <div class="website-name">Client Website C</div>
+        <div class="website-desc">A clean, modern website for a contractor business, focused on showcasing services and driving consultation requests.</div>
+        <div class="website-services">
+          <span class="service-tag">Web Design</span>
+          <span class="service-tag">Development</span>
+          <span class="service-tag">Contact Forms</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="website-card">
+      <div class="website-preview">
+        <div class="website-preview-inner">
+          <div class="preview-bar">
+            <div class="preview-dot"></div><div class="preview-dot"></div><div class="preview-dot"></div>
+          </div>
+          <div class="preview-body">
+            <div class="preview-hero-block" style="background: linear-gradient(135deg, #2d1b4e, #8b5cf6);"></div>
+            <div class="preview-content-rows">
+              <div class="preview-row"></div>
+              <div class="preview-row"></div>
+              <div class="preview-row"></div>
+              <div class="preview-row-gold"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="website-info">
+        <div class="website-tag">Placeholder — Replace with client site</div>
+        <div class="website-name">Client Website D</div>
+        <div class="website-desc">An e-commerce-ready site built for a retail brand, with a strong visual identity and mobile-first design.</div>
+        <div class="website-services">
+          <span class="service-tag">Web Design</span>
+          <span class="service-tag">E-Commerce</span>
+          <span class="service-tag">Mobile Optimization</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── BRAND WORK ── -->
+<section class="portfolio-section brand-section" id="brand-section">
+  <div class="section-eyebrow">Brand & Logo Design</div>
+  <h2 class="section-title">Identities Built to Last</h2>
+  <p class="section-sub">Every brand we create is built with intention — a visual identity that reflects who you are and resonates with the clients you want to attract.</p>
+
+  <div class="brand-grid fade-up">
+
+    <div class="brand-card">
+      <div class="brand-preview brand-preview--a">
+        <div class="brand-logo-placeholder">
+          <div class="brand-logo-mark" style="background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);">
+            <svg viewBox="0 0 36 36" fill="none" stroke="#C9A84C" stroke-width="1.5">
+              <polygon points="18,4 32,28 4,28"/>
+              <circle cx="18" cy="18" r="5"/>
+            </svg>
+          </div>
+          <div class="brand-wordmark" style="color: #C9A84C; font-size: 0.75rem;">APEX CO.</div>
+          <div class="brand-color-dots">
+            <div class="brand-dot" style="background:#1a1a2e;border:1px solid rgba(255,255,255,0.2);"></div>
+            <div class="brand-dot" style="background:#C9A84C;"></div>
+            <div class="brand-dot" style="background:#ffffff;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="brand-info">
+        <div class="brand-tag">Logo & Brand Identity</div>
+        <div class="brand-name">Apex Co. — Placeholder</div>
+        <div class="brand-desc">Dark, sophisticated identity for a professional services firm. Replace with real client brand work.</div>
+      </div>
+    </div>
+
+    <div class="brand-card">
+      <div class="brand-preview brand-preview--b">
+        <div class="brand-logo-placeholder">
+          <div class="brand-logo-mark" style="background: rgba(139,90,43,0.12); border: 1px solid rgba(139,90,43,0.25);">
+            <svg viewBox="0 0 36 36" fill="none" stroke="#8B5A2B" stroke-width="1.5">
+              <circle cx="18" cy="18" r="12"/>
+              <path d="M12 18 C12 12 24 12 24 18 C24 24 12 24 12 18"/>
+              <circle cx="18" cy="18" r="3" fill="#8B5A2B"/>
+            </svg>
+          </div>
+          <div class="brand-wordmark" style="color: #5a3e28; font-size: 0.75rem;">TERRA STUDIO</div>
+          <div class="brand-color-dots">
+            <div class="brand-dot" style="background:#8B5A2B;"></div>
+            <div class="brand-dot" style="background:#d4a96a;"></div>
+            <div class="brand-dot" style="background:#f5f0e8;border:1px solid #ddd;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="brand-info">
+        <div class="brand-tag">Logo & Brand Kit</div>
+        <div class="brand-name">Terra Studio — Placeholder</div>
+        <div class="brand-desc">Warm, earthy brand identity for a creative studio. Replace with real client brand work.</div>
+      </div>
+    </div>
+
+    <div class="brand-card">
+      <div class="brand-preview brand-preview--c">
+        <div class="brand-logo-placeholder">
+          <div class="brand-logo-mark" style="background: rgba(107,210,150,0.15); border: 1px solid rgba(107,210,150,0.3);">
+            <svg viewBox="0 0 36 36" fill="none" stroke="#6bd296" stroke-width="1.5">
+              <rect x="6" y="6" width="10" height="10" rx="1"/>
+              <rect x="20" y="6" width="10" height="10" rx="1"/>
+              <rect x="6" y="20" width="10" height="10" rx="1"/>
+              <rect x="20" y="20" width="10" height="10" rx="1"/>
+            </svg>
+          </div>
+          <div class="brand-wordmark" style="color: #6bd296; font-size: 0.75rem;">GROVE GROUP</div>
+          <div class="brand-color-dots">
+            <div class="brand-dot" style="background:#0d3b2e;"></div>
+            <div class="brand-dot" style="background:#6bd296;"></div>
+            <div class="brand-dot" style="background:#c8f5dc;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="brand-info">
+        <div class="brand-tag">Logo & Digital Assets</div>
+        <div class="brand-name">Grove Group — Placeholder</div>
+        <div class="brand-desc">Clean, modern identity for a growing business. Replace with real client brand work.</div>
+      </div>
+    </div>
+
+    <div class="brand-card">
+      <div class="brand-preview brand-preview--d">
+        <div class="brand-logo-placeholder">
+          <div class="brand-logo-mark" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+            <svg viewBox="0 0 36 36" fill="none" stroke="#ffffff" stroke-width="1.5">
+              <path d="M18 6 L30 28 L6 28 Z"/>
+              <line x1="18" y1="14" x2="18" y2="22"/>
+              <circle cx="18" cy="24" r="1.5" fill="white"/>
+            </svg>
+          </div>
+          <div class="brand-wordmark" style="color: rgba(255,255,255,0.85); font-size: 0.75rem;">PINNACLE</div>
+          <div class="brand-color-dots">
+            <div class="brand-dot" style="background:#2c2c54;border:1px solid rgba(255,255,255,0.2);"></div>
+            <div class="brand-dot" style="background:#474787;"></div>
+            <div class="brand-dot" style="background:#ffffff;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="brand-info">
+        <div class="brand-tag">Full Brand Identity</div>
+        <div class="brand-name">Pinnacle — Placeholder</div>
+        <div class="brand-desc">Bold, high-contrast identity for a professional firm. Replace with real client brand work.</div>
+      </div>
+    </div>
+
+    <div class="brand-card">
+      <div class="brand-preview brand-preview--e">
+        <div class="brand-logo-placeholder">
+          <div class="brand-logo-mark" style="background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3);">
+            <svg viewBox="0 0 36 36" fill="none" stroke="#C9A84C" stroke-width="1.5">
+              <circle cx="18" cy="18" r="11"/>
+              <path d="M11 18 L18 11 L25 18 L18 25 Z"/>
+            </svg>
+          </div>
+          <div class="brand-wordmark" style="color: #C9A84C; font-size: 0.75rem;">MERIDIAN</div>
+          <div class="brand-color-dots">
+            <div class="brand-dot" style="background:#1b1b1b;border:1px solid rgba(255,255,255,0.15);"></div>
+            <div class="brand-dot" style="background:#C9A84C;"></div>
+            <div class="brand-dot" style="background:#e8c97a;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="brand-info">
+        <div class="brand-tag">Logo & Brand Kit</div>
+        <div class="brand-name">Meridian — Placeholder</div>
+        <div class="brand-desc">Minimal, gold-accented identity for a consultant brand. Replace with real client brand work.</div>
+      </div>
+    </div>
+
+    <div class="brand-card">
+      <div class="brand-preview brand-preview--f">
+        <div class="brand-logo-placeholder">
+          <div class="brand-logo-mark" style="background: rgba(255,200,220,0.15); border: 1px solid rgba(255,200,220,0.3);">
+            <svg viewBox="0 0 36 36" fill="none" stroke="#ffc8dc" stroke-width="1.5">
+              <path d="M18 8 C18 8 28 14 28 22 C28 27 23.5 30 18 30 C12.5 30 8 27 8 22 C8 14 18 8 18 8Z"/>
+              <circle cx="18" cy="20" r="4"/>
+            </svg>
+          </div>
+          <div class="brand-wordmark" style="color: #ffc8dc; font-size: 0.75rem;">BLOOM & CO.</div>
+          <div class="brand-color-dots">
+            <div class="brand-dot" style="background:#4a1942;border:1px solid rgba(255,255,255,0.15);"></div>
+            <div class="brand-dot" style="background:#c46b94;"></div>
+            <div class="brand-dot" style="background:#ffc8dc;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="brand-info">
+        <div class="brand-tag">Logo & Digital Assets</div>
+        <div class="brand-name">Bloom & Co. — Placeholder</div>
+        <div class="brand-desc">Vibrant, feminine brand identity for a retail brand. Replace with real client brand work.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<div class="portfolio-cta">
+  <div class="portfolio-cta-bg"></div>
+  <div class="portfolio-cta-grid"></div>
+  <div class="portfolio-cta-content fade-up">
+    <h2 class="portfolio-cta-title">Ready to build something <em>you're proud of?</em></h2>
+    <p class="portfolio-cta-sub">Whether you need a website, a brand identity, or both — let's create something that truly represents your business.</p>
+    <a href="contact.html" class="btn-primary">Get Started Today</a>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <div class="footer-brand">Inspired Consulting</div>
+    <div class="footer-tagline">From Inspiration to Achievement</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Inspired Consulting. All rights reserved.</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  function filterPortfolio(type, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const webSection = document.getElementById('web-section');
+    const brandSection = document.getElementById('brand-section');
+
+    if (type === 'all') {
+      webSection.style.display = '';
+      brandSection.style.display = '';
+    } else if (type === 'web') {
+      webSection.style.display = '';
+      brandSection.style.display = 'none';
+    } else if (type === 'brand') {
+      webSection.style.display = 'none';
+      brandSection.style.display = '';
+    }
+  }
+</script>
+</body>
+</html>
