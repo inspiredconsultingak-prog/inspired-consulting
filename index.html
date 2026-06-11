@@ -166,7 +166,7 @@
   /* ── PILLARS SECTION ── */
   .pillars-section { background: var(--white); padding: 3rem 4rem 4rem; }
   .pillars-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
+    display: grid; grid-template-columns: repeat(3, 1fr);
     gap: 2px; max-width: 1200px; margin: 0 auto;
     border: 1.5px solid rgba(75,14,158,0.12);
     background: rgba(75,14,158,0.08);
@@ -182,6 +182,7 @@
   }
   .pillar-card--ops .pillar-card-accent { background: linear-gradient(to right, var(--purple-mid), var(--purple-deep)); }
   .pillar-card--growth .pillar-card-accent { background: linear-gradient(to right, var(--gold), var(--gold-light)); }
+  .pillar-card--scale .pillar-card-accent { background: linear-gradient(to right, var(--purple-mid), var(--purple-deep)); }
 
   .pillar-card-title {
     font-family: 'Cormorant Garamond', serif;
@@ -222,6 +223,10 @@
     color: var(--gold);
   }
   .btn-pillar--growth:hover { border-color: var(--gold); background: rgba(201,168,76,0.06); transform: translateY(-1px); }
+  .btn-pillar--scale {
+    background: var(--purple-deep); color: var(--white);
+  }
+  .btn-pillar--scale:hover { background: var(--purple-mid); transform: translateY(-1px); }
 
   /* ── STATEMENT ── */
   .statement { background: var(--purple-deep); text-align: center; position: relative; overflow: hidden; padding: 7rem 4rem; }
@@ -310,8 +315,7 @@
     .intro-section, .smarter-section { padding: 3rem 1.5rem; }
     .hero { padding: 7rem 1.5rem 4rem; }
     .pillars-section { padding: 2.5rem 1.5rem 3.5rem; }
-    .pillars-grid { grid-template-columns: 1fr; }
-    .why-icons { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+    .pillars-grid { grid-template-columns: 1fr; }    .why-icons { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
     .testimonial-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .form-row { grid-template-columns: 1fr; }
@@ -362,6 +366,7 @@
       <div class="nav-dropdown-menu">
         <a href="operations.html">Business Operations</a>
         <a href="growth.html">Business Growth</a>
+        <a href="scale.html">Scale</a>
       </div>
     </li>
     <li><a href="portfolio.html">Portfolio</a></li>
@@ -431,20 +436,28 @@
   <p class="pillars-intro fade-up">Choose the level of support your business needs right now.</p>
   <div class="pillars-grid fade-up">
 
-    <!-- Operations -->
+    <!-- Build -->
     <div class="pillar-card pillar-card--ops">
       <div class="pillar-card-accent"></div>
-      <h3 class="pillar-card-title">Business Operations</h3>
-      <p class="pillar-card-desc">Keep your business organized, compliant, and running smoothly with essential back-office support that removes stress and reduces risk.</p>
+      <h3 class="pillar-card-title">Build</h3>
+      <p class="pillar-card-desc">Keep your operations organized, compliant, and running smoothly with essential back-office support that removes stress and reduces risk.</p>
       <a href="operations.html" class="btn-pillar btn-pillar--ops">View Operations Services</a>
     </div>
 
-    <!-- Growth -->
+    <!-- Grow -->
     <div class="pillar-card pillar-card--growth">
       <div class="pillar-card-accent"></div>
-      <h3 class="pillar-card-title">Business Growth</h3>
-      <p class="pillar-card-desc">Build a stronger brand and a clearer strategy so your business can grow with intention and direction.</p>
+      <h3 class="pillar-card-title">Grow</h3>
+      <p class="pillar-card-desc">Market and develop a stronger brand with a clear strategy so your business can grow with intention and direction.</p>
       <a href="growth.html" class="btn-pillar btn-pillar--growth">View Growth Services</a>
+    </div>
+
+    <!-- Scale -->
+    <div class="pillar-card pillar-card--scale">
+      <div class="pillar-card-accent"></div>
+      <h3 class="pillar-card-title">Scale</h3>
+      <p class="pillar-card-desc">Implement intelligent systems that reduce repetitive tasks, streamline operations, and help your business scale more efficiently.</p>
+      <a href="scale.html" class="btn-pillar btn-pillar--scale">View Scale Services</a>
     </div>
 
   </div>

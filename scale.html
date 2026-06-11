@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Business Operations | Inspired Consulting</title>
+<title>Scale | Inspired Consulting</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -20,7 +20,6 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'Jost', sans-serif; background: var(--off-white); color: var(--text-dark); overflow-x: hidden; }
 
-
   /* ── NAV DROPDOWN ── */
   .nav-dropdown { position: relative; }
   .nav-dropdown > a { display: flex; align-items: center; gap: 0.35rem; }
@@ -36,7 +35,6 @@
   .nav-dropdown:hover > a::after { transform: rotate(225deg) translateY(-2px); }
   .nav-dropdown-menu {
     position: absolute; top: calc(100% + 1rem); left: 50%;
-    transform: translateX(-50%);
     background: rgba(30, 8, 65, 0.98);
     border: 1px solid rgba(201,168,76,0.2);
     border-radius: 2px;
@@ -79,47 +77,6 @@
   .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
   .nav-cta { color: var(--purple-deep) !important; background: var(--gold); padding: 0.5rem 1.25rem; border-radius: 2px; transition: background 0.2s !important; }
   .nav-cta:hover { background: var(--gold-light) !important; }
-  /* ── NAV DROPDOWN ── */
-  .nav-dropdown { position: relative; }
-  .nav-dropdown > a { display: flex; align-items: center; gap: 0.35rem; }
-  .nav-dropdown > a::after {
-    content: '';
-    display: inline-block;
-    width: 6px; height: 6px;
-    border-right: 1px solid rgba(255,255,255,0.5);
-    border-bottom: 1px solid rgba(255,255,255,0.5);
-    transform: rotate(45deg) translateY(-2px);
-    transition: transform 0.2s;
-  }
-  .nav-dropdown:hover > a::after { transform: rotate(225deg) translateY(-2px); }
-  .nav-dropdown-menu {
-    position: absolute; top: calc(100% + 1rem); left: 50%;
-    transform: translateX(-50%);
-    background: rgba(30, 8, 65, 0.98);
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 2px;
-    min-width: 180px;
-    opacity: 0; visibility: hidden;
-    transform: translateX(-50%) translateY(-6px);
-    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
-    z-index: 200;
-    overflow: hidden;
-  }
-  .nav-dropdown:hover .nav-dropdown-menu {
-    opacity: 1; visibility: visible;
-    transform: translateX(-50%) translateY(0);
-  }
-  .nav-dropdown-menu a {
-    display: block;
-    padding: 0.75rem 1.25rem;
-    font-size: 0.72rem; letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.7) !important;
-    border-bottom: 1px solid rgba(201,168,76,0.1);
-    transition: background 0.15s, color 0.15s !important;
-    white-space: nowrap;
-  }
-  .nav-dropdown-menu a:last-child { border-bottom: none; }
-  .nav-dropdown-menu a:hover { background: rgba(201,168,76,0.08); color: var(--gold-light) !important; }
 
   /* PAGE HERO */
   .page-hero {
@@ -206,13 +163,13 @@
     .tile { flex: 1 1 calc(50% - 1.5px); }
     footer { flex-direction: column; gap: 1.25rem; text-align: center; }
     .footer-links { justify-content: center; }
+    .cta-strip { padding: 3.5rem 1.5rem; }
+    .btn-ghost { margin-left: 0; margin-top: 0.75rem; }
   }
   @media (max-width: 640px) {
     .nav-links { display: none; }
     .page-hero { padding: 7rem 1.5rem 4rem; }
     .tile { flex: 1 1 100%; }
-    .cta-strip { padding: 3.5rem 1.5rem; }
-    .btn-ghost { margin-left: 0; margin-top: 0.75rem; }
   }
 </style>
 </head>
@@ -249,7 +206,7 @@
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li class="nav-dropdown">
-      <a href="services.html">Services</a>
+      <a href="services.html" class="active">Services</a>
       <div class="nav-dropdown-menu">
         <a href="operations.html">Business Operations</a>
         <a href="growth.html">Business Growth</a>
@@ -266,9 +223,9 @@
   <div class="page-hero-bg"></div>
   <div class="page-hero-grid"></div>
   <div class="page-hero-content">
-    <p class="page-hero-eyebrow">Build</p>
-    <h1 class="page-hero-title">Business <em>Operations</em></h1>
-    <p class="page-hero-sub">Keep your operations organized, compliant, and running smoothly with essential back-office support that removes stress and reduces risk.</p>
+    <p class="page-hero-eyebrow">Scale</p>
+    <h1 class="page-hero-title">Work <em>Smarter,</em><br>Not Harder</h1>
+    <p class="page-hero-sub">Implement intelligent systems that reduce repetitive tasks, streamline operations, and help your business scale more efficiently.</p>
   </div>
 </div>
 
@@ -277,67 +234,104 @@
 
     <div class="tile">
       <div class="tile-front">
-        <svg class="tile-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M5 26 L5 16 L11 16 L11 26"/><path d="M13 26 L13 10 L19 10 L19 26"/><path d="M21 26 L21 18 L27 18 L27 26"/><line x1="3" y1="26" x2="29" y2="26"/></svg>
-        <div class="tile-name">Bookkeeping</div>
+        <svg class="tile-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25">
+          <path d="M6 16 C6 10 10 6 16 6 C22 6 26 10 26 16"/>
+          <path d="M26 16 C26 22 22 26 16 26 C10 26 6 22 6 16"/>
+          <polyline points="22,12 26,16 22,20"/>
+          <polyline points="10,12 6,16 10,20"/>
+          <line x1="16" y1="11" x2="16" y2="21"/>
+        </svg>
+        <div class="tile-name">Workflow Automation</div>
       </div>
       <div class="tile-back">
-        <div class="tile-back-name">Bookkeeping</div>
-        <div class="tile-back-desc">Accurate books, reconciled accounts, and clear financial reporting so every business decision is grounded in real numbers.</div>
+        <div class="tile-back-name">Workflow Automation</div>
+        <div class="tile-back-desc">Eliminate manual, repetitive processes with automated workflows that keep your business running smoothly — even when you're not in the room.</div>
       </div>
     </div>
 
     <div class="tile">
       <div class="tile-front">
-        <svg class="tile-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25"><circle cx="16" cy="9" r="4.5"/><path d="M7 27 C7 21 25 21 25 27"/><rect x="18" y="16" width="10" height="8" rx="1.5"/><line x1="20" y1="19" x2="26" y2="19"/><line x1="20" y1="21.5" x2="24" y2="21.5"/></svg>
-        <div class="tile-name">Payroll Processing</div>
+        <svg class="tile-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25">
+          <rect x="4" y="8" width="14" height="16" rx="2"/>
+          <path d="M18 12 L28 8 L28 24 L18 20"/>
+          <circle cx="10" cy="14" r="2"/>
+          <line x1="7" y1="19" x2="13" y2="19"/>
+        </svg>
+        <div class="tile-name">AI Assistants</div>
       </div>
       <div class="tile-back">
-        <div class="tile-back-name">Payroll Processing</div>
-        <div class="tile-back-desc">Accurate, on-time payroll processing so your team is paid right, every time, without the administrative burden falling on you.</div>
+        <div class="tile-back-name">AI Assistants</div>
+        <div class="tile-back-desc">Custom AI-powered assistants trained on your business to handle inquiries, support your team, and deliver consistent, intelligent responses around the clock.</div>
       </div>
     </div>
 
     <div class="tile">
       <div class="tile-front">
-        <svg class="tile-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25"><circle cx="16" cy="10" r="5"/><path d="M6 28 C6 21 26 21 26 28"/><circle cx="25" cy="9" r="3"/><circle cx="7" cy="13" r="3"/></svg>
-        <div class="tile-name">HR Support & Compliance</div>
+        <svg class="tile-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25">
+          <path d="M6 8 L26 8 L26 20 L18 20 L16 24 L14 20 L6 20 Z"/>
+          <line x1="10" y1="13" x2="22" y2="13"/>
+          <line x1="10" y1="16.5" x2="18" y2="16.5"/>
+        </svg>
+        <div class="tile-name">Client Onboarding Systems</div>
       </div>
       <div class="tile-back">
-        <div class="tile-back-name">HR Support & Compliance</div>
-        <div class="tile-back-desc">HR policies, employee documentation, and compliance checks that protect your business and support a well-managed team.</div>
+        <div class="tile-back-name">Client Onboarding Systems</div>
+        <div class="tile-back-desc">Structured, automated onboarding experiences that make a strong first impression, collect what you need, and get new clients up to speed without manual effort.</div>
       </div>
     </div>
 
     <div class="tile">
       <div class="tile-front">
-        <svg class="tile-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M16 4 L20 11 L28 12 L22 18 L24 26 L16 22 L8 26 L10 18 L4 12 L12 11 Z"/></svg>
-        <div class="tile-name">Workers' Comp & Audits</div>
+        <svg class="tile-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25">
+          <circle cx="16" cy="16" r="4"/>
+          <circle cx="6" cy="10" r="3"/>
+          <circle cx="26" cy="10" r="3"/>
+          <circle cx="6" cy="22" r="3"/>
+          <circle cx="26" cy="22" r="3"/>
+          <line x1="9" y1="11" x2="13" y2="14"/>
+          <line x1="19" y1="14" x2="23" y2="11"/>
+          <line x1="9" y1="21" x2="13" y2="18"/>
+          <line x1="19" y1="18" x2="23" y2="21"/>
+        </svg>
+        <div class="tile-name">CRM Automation</div>
       </div>
       <div class="tile-back">
-        <div class="tile-back-name">Workers' Comp & Audits</div>
-        <div class="tile-back-desc">Accurate classification, payroll reporting, and full audit representation. We challenge misclassifications and recover overcharges on your behalf.</div>
+        <div class="tile-back-name">CRM Automation</div>
+        <div class="tile-back-desc">Set up and automate your CRM so leads are tracked, follow-ups happen on time, and no opportunity slips through the cracks — without you having to manage every step.</div>
       </div>
     </div>
 
     <div class="tile">
       <div class="tile-front">
-        <svg class="tile-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="4" y="4" width="24" height="24" rx="2"/><path d="M4 12 L28 12"/><path d="M12 4 L12 12"/><path d="M20 4 L20 12"/><line x1="9" y1="19" x2="23" y2="19"/><line x1="9" y1="24" x2="17" y2="24"/></svg>
-        <div class="tile-name">Licensing & Compliance</div>
+        <svg class="tile-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25">
+          <rect x="5" y="5" width="10" height="10" rx="1.5"/>
+          <rect x="17" y="5" width="10" height="10" rx="1.5"/>
+          <rect x="5" y="17" width="10" height="10" rx="1.5"/>
+          <path d="M22 17 C22 17 22 14 19 14 L13 14"/>
+          <polyline points="11,12 13,14 11,16"/>
+        </svg>
+        <div class="tile-name">Custom GPT Development</div>
       </div>
       <div class="tile-back">
-        <div class="tile-back-name">Licensing & Compliance</div>
-        <div class="tile-back-desc">License renewals, insurance certificates, bond tracking, and regulatory compliance managed proactively so no deadline is ever missed.</div>
+        <div class="tile-back-name">Custom GPT Development</div>
+        <div class="tile-back-desc">Purpose-built GPT tools trained on your processes, products, and voice — giving your team and clients an intelligent, always-available resource unique to your business.</div>
       </div>
     </div>
 
     <div class="tile">
       <div class="tile-front">
-        <svg class="tile-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M6 4 L26 4 L26 28 L6 28 Z"/><line x1="11" y1="11" x2="21" y2="11"/><line x1="11" y1="16" x2="21" y2="16"/><line x1="11" y1="21" x2="17" y2="21"/></svg>
-        <div class="tile-name">Contract & Invoicing</div>
+        <svg class="tile-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25">
+          <path d="M4 24 L10 16 L16 20 L22 10 L28 14"/>
+          <circle cx="10" cy="16" r="2" fill="currentColor" stroke="none"/>
+          <circle cx="16" cy="20" r="2" fill="currentColor" stroke="none"/>
+          <circle cx="22" cy="10" r="2" fill="currentColor" stroke="none"/>
+          <line x1="4" y1="28" x2="28" y2="28"/>
+        </svg>
+        <div class="tile-name">Process Optimization</div>
       </div>
       <div class="tile-back">
-        <div class="tile-back-name">Contract & Invoicing</div>
-        <div class="tile-back-desc">Progress billing, change order tracking, and contract documentation structured around the realities of your business cycle.</div>
+        <div class="tile-back-name">Process Optimization</div>
+        <div class="tile-back-desc">Audit your existing workflows, identify inefficiencies, and implement leaner systems that save time, reduce cost, and position your business to scale with confidence.</div>
       </div>
     </div>
 
@@ -345,10 +339,10 @@
 </section>
 
 <div class="cta-strip fade-up">
-  <h2 class="cta-strip-title">Ready to simplify your operations?</h2>
-  <p class="cta-strip-sub">Let's talk about where your business needs the most support and build a plan around it.</p>
+  <h2 class="cta-strip-title">Ready to work smarter?</h2>
+  <p class="cta-strip-sub">Let's identify where automation and intelligent systems can have the biggest impact on your business.</p>
   <a href="contact.html" class="btn-primary">Schedule a Consultation</a>
-  <a href="growth.html" class="btn-ghost">Explore Growth Services →</a>
+  <a href="operations.html" class="btn-ghost">Explore Build Services →</a>
 </div>
 
 <footer>
@@ -359,6 +353,7 @@
   <ul class="footer-links">
     <li><a href="about.html">About</a></li>
     <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
     <li><a href="resources.html">Resources</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
